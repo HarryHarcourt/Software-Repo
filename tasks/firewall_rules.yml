@@ -1,0 +1,18 @@
+---
+###
+## Update firewall rules to allow access to port 80 / 443
+#
+
+- name: Open the firewall for http
+  firewalld:
+    service: http
+    permanent: true
+    state: enabled
+  notify: Restart firewalld
+
+- name: Open the firewall for https
+  firewalld:
+    service: https
+    permanent: true
+    state: enabled
+  notify: Restart firewalld

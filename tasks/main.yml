@@ -1,0 +1,25 @@
+---
+- name: os-specific vars called from rolename/vars
+  include_vars:  "{{ ansible_os_family }}.yml"
+  tags:
+      - always
+
+- name: Dump Variables
+  include: debug_vars.yml
+  tags:
+      - always
+
+- name: Gather the common variables
+  include: common-parameters.yml
+  tags:
+      - always
+
+- name: Install Apache
+  include: install_apache.yml
+  tags:
+      - install_apache
+
+- name: Open firewall ports
+  include: firewall_rules.yml
+  tags:
+      - open_firewall_ports
