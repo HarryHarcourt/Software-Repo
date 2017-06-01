@@ -9,4 +9,8 @@
     state: present
   notify: Restart httpd
 
-
+- name: Start the Apache Service
+  service:
+    name: httpd
+    enabled: true
+    state: started
